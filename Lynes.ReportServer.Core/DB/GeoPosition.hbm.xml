@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="Lynes.ReportsServer.Core"
+                  namespace="Lynes.ReportsServer.Core">
+
+  <class name="GeoPosition" table="GeoPosition">
+    <id name="Id">
+      <generator class="guid" />
+    </id>
+
+    <property name="Latitude" /> 
+    <property name="Longitude" />
+    <property name="Altitude"  />
+  </class>
+
+</hibernate-mapping>
