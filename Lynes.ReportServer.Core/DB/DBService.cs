@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Lynes.ReportsServer.Core.DB
 {
-    internal class DBService : IDBService
+    public class DBService : IDBService
     {
         private static ILog s_log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 

@@ -24,8 +24,8 @@ namespace Lynes.ReportsServer.Core
         }
 
         internal void Close()
-        {
-            DBService.Close();
+        { 
+        
         }
     }
 }

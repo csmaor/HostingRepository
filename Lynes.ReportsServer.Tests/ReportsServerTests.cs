@@ -24,7 +24,7 @@ namespace Lynes.ReportsServer.Tests
         public void TestSavingData()
         {
             DateTime now = DateTime.Now;
-            ReportData data = new ReportData() { Time = now, Velocity = 1.0, Latitude = 30.0, Longitude = 30.0, Altitude = 100 };
+            ReportData data = new ReportData() { Time = now, Latitude = 30.0, Longitude = 30.0 };
             ServerFacade.Instance.DBService.SaveReport(data);
 
             IList<ReportData> allData = ServerFacade.Instance.DBService.GetAllData();
