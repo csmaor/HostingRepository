@@ -9,11 +9,8 @@
     </id>
 
     <property name="Time" />
-    <property name="Velocity" />
-
     <property name="Latitude" />
     <property name="Longitude" />
-    <property name="Altitude"  />
     
   </class>
 
