@@ -16,7 +16,9 @@ namespace Lynes.ReportsServer.Core
         public ServerFacadeImpl()
         {
             Instance = this;
-        }
+        } 
+
+        private void F() { }
 
         public void SetDBService(IDBService dbService)
         {
