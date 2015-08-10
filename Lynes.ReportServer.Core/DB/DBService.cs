@@ -30,24 +30,54 @@ namespace Lynes.ReportsServer.Core.DB
             m_session = sessions.OpenSession();
         }
 
-        public void SaveReport(LocationData data)
+        public void SaveLocation(LocationData data)
         {
-            s_log.Info($"Saving Report Data: {data}");
+            s_log.Info($"Saving Location Data: {data}");
             m_session.Save(data);
             m_session.Flush();
         }
 
-        public IList<LocationData> GetAllData()
+        public void SaveOperation(OperationData data)
+        {
+            s_log.Info($"Saving Operation Data: {data}");
+            m_session.Save(data);
+            m_session.Flush();
+        }
+
+        public void SavePlace(PlaceData data)
+        {
+            s_log.Info($"Saving Place Data: {data}");
+            m_session.Save(data);
+            m_session.Flush();
+        }
+
+        public IList<LocationData> GetLocationsData()
         {
             IQuery q = m_session.CreateQuery("FROM LocationData");
             IList<LocationData> list = q.List<LocationData>();
             return list;
         }
 
+
+        public IList<OperationData> GetOperationsData()
+        {
+            IQuery q = m_session.CreateQuery("FROM OperationData");
+            IList<OperationData> list = q.List<OperationData>();
+            return list;
+        }
+
+        public IList<PlaceData> GetPlacesData()
+        {
+            IQuery q = m_session.CreateQuery("FROM PlaceData");
+            IList<PlaceData> list = q.List<PlaceData>();
+            return list;
+        }
         public void Close()
         {
             s_log.Info("Closing Session");
             m_session.Close();
         }
+
+
     }
 }

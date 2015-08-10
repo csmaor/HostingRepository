@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using Lynes.ReportsServer.Core.DataModels;
 
 namespace Lynes.ReportsService
 {
@@ -24,17 +25,25 @@ namespace Lynes.ReportsService
         }
         public void ReportData(string identifier, DateTime dateTime, double latitude, double longitude)
         {
-            ReportedLocation data = new ReportedLocation() { Identifier = identifier, Latitude = latitude, Longitude = longitude };
+            LocationData data = new LocationData() { Identifier = identifier, Time = dateTime, Latitude = latitude, Longitude = longitude };
+            m_dbService.SaveLocation(data);
         }
 
         public void ReportOperation(string identifier, string operation)
         {
-            throw new NotImplementedException();
+            OperationData data = new OperationData() { Identifier = identifier, Operation = operation };
+            m_dbService.SaveOperation(data);
         }
 
         public void ReportPlace(string identifier, string placeId, string placeName)
         {
-            throw new NotImplementedException();
+            PlaceData data = new PlaceData() { Identifier = identifier, PlaceId = placeId, PlaceName = placeName };
+            m_dbService.SavePlace(data);
+        }
+
+        public void Close()
+        {
+            m_dbService.Close();
         }
     }
 }

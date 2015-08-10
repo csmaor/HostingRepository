@@ -90,6 +90,10 @@
       <Project>{e6532c8d-ccec-443d-b7d4-4d7fb6526b57}</Project>
       <Name>Lynes.ReportsServer.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WcfReportsService\Lynes.ReportsService.csproj">
+      <Project>{4fc53043-f461-4d2d-8671-1f82f3c7fd68}</Project>
+      <Name>Lynes.ReportsService</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

@@ -1,9 +1,4 @@
-﻿using Lynes.ReportsServer.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Lynes.ReportsServer.Core.DataModels;
 
 namespace Lynes.ReportsServer.Core.DB
@@ -13,7 +8,9 @@ namespace Lynes.ReportsServer.Core.DB
         void Init();
         void Close();
 
-        void SaveReport(LocationData data);
-        IList<LocationData> GetAllData();
+        void SaveLocation(LocationData data);
+        IList<LocationData> GetLocationsData();
+        IList<OperationData> GetOperationsData();
+        IList<PlaceData> GetPlacesData();
     }
 }
