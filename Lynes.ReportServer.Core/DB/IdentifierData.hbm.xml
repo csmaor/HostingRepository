@@ -15,6 +15,7 @@
       <property name="Time" />
       <property name="Latitude" />
       <property name="Longitude" />
+      <property name="Accuracy" />
     </union-subclass>
 
 

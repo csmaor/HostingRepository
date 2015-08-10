@@ -23,9 +23,9 @@ namespace Lynes.ReportsService
             m_dbService = new DBService();
             m_dbService.Init();
         }
-        public void ReportLocation(string identifier, DateTime dateTime, double latitude, double longitude)
+        public void ReportLocation(string identifier, DateTime dateTime, double latitude, double longitude, double accuracy)
         {
-            LocationData data = new LocationData() { Identifier = identifier, Time = dateTime, Latitude = latitude, Longitude = longitude };
+            LocationData data = new LocationData() { Identifier = identifier, Time = dateTime, Latitude = latitude, Longitude = longitude, Accuracy=accuracy };
             m_dbService.SaveLocation(data);
         }
 

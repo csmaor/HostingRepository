@@ -9,5 +9,7 @@ namespace Lynes.ReportsServer.Core.DataModels
         public virtual double Latitude { get; set; }
 
         public virtual double Longitude { get; set; }
+
+        public virtual double Accuracy { get; set; }
     }
 }
