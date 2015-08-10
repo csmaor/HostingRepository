@@ -35,7 +35,7 @@ namespace Lynes.ReportsServer.Tests
         public void TestSavingData()
         {
             DateTime now = DateTime.Now;
-            m_reportsService.ReportData("MyId", now, 30.0, 30.0);
+            m_reportsService.ReportLocation("MyId", now, 30.0, 30.0);
 
             IList<LocationData> allData = m_dbService.GetLocationsData();
             LocationData lastLoadedData = allData[0];

@@ -14,7 +14,7 @@ namespace Lynes.ReportsService
     {
         [WebInvoke(Method = "POST", UriTemplate = "ReportData")]
         [OperationContract]
-        void ReportData(string identifier, DateTime dateTime, double latitude, double longitude);
+        void ReportLocation(string identifier, DateTime dateTime, double latitude, double longitude);
 
         [WebInvoke(Method = "POST", UriTemplate = "ReportOperation")]
         [OperationContract]
