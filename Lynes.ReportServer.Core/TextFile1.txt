@@ -1,0 +1,4 @@
+﻿1. Report from google places:
+Conditions:
+a. If the location didn't changed for 10 min - search and report google place (10m radius);
+

@@ -1,11 +1,6 @@
-﻿using log4net;
+﻿using System.Reflection;
+using log4net;
 using Lynes.ReportsServer.Core.DB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lynes.ReportsServer.Core
 {
@@ -17,8 +12,6 @@ namespace Lynes.ReportsServer.Core
         {
             Instance = this;
         } 
-
-        private void F() { }
 
         public void SetDBService(IDBService dbService)
         {

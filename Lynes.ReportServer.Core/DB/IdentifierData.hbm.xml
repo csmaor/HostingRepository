@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="Lynes.ReportsServer.Core"
+                  namespace="Lynes.ReportsServer.Core.DataModels">
+
+  <class name="IdentifierData" table="IdentifierData" abstract="true">
+    <id name="Id">
+      <generator class="guid" />
+    </id>
+
+    <property name="Identifier" />
+
+
+    <union-subclass table="LocationData"  name="LocationData">
+      <property name="Time" />
+      <property name="Latitude" />
+      <property name="Longitude" />
+    </union-subclass>
+
+
+    <union-subclass table="PlaceData"  name="PlaceData">
+      <property name="PlaceId" />
+      <property name="PlaceName" />
+    </union-subclass>
+
+    <union-subclass table="OperationData"  name="OperationData">
+      <property name="Operation" />
+    </union-subclass>
+
+  </class>
+
+</hibernate-mapping>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Lynes.ReportsServer.Core.DataModels;
 
 namespace Lynes.ReportsServer.Core.DB
 {
@@ -22,24 +23,24 @@ namespace Lynes.ReportsServer.Core.DB
             // Initialize NHibernate
             var cfg = new Configuration();
             cfg.Configure();
-            cfg.AddAssembly(typeof(ReportData).Assembly);
+            cfg.AddAssembly(typeof(LocationData).Assembly);
 
             // Get ourselves an NHibernate Session
             ISessionFactory sessions = cfg.BuildSessionFactory();
             m_session = sessions.OpenSession();
         }
 
-        public void SaveReport(ReportData data)
+        public void SaveReport(LocationData data)
         {
             s_log.Info($"Saving Report Data: {data}");
             m_session.Save(data);
             m_session.Flush();
         }
 
-        public IList<ReportData> GetAllData()
+        public IList<LocationData> GetAllData()
         {
-            IQuery q = m_session.CreateQuery("FROM ReportData");
-            IList<ReportData> list = q.List<ReportData>();
+            IQuery q = m_session.CreateQuery("FROM LocationData");
+            IList<LocationData> list = q.List<LocationData>();
             return list;
         }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lynes.ReportsServer.Core.DataModels;
 
 namespace Lynes.ReportsServer.Tests
 {
@@ -24,11 +25,11 @@ namespace Lynes.ReportsServer.Tests
         public void TestSavingData()
         {
             DateTime now = DateTime.Now;
-            ReportData data = new ReportData() { Time = now, Latitude = 30.0, Longitude = 30.0 };
+            LocationData data = new LocationData() { Identifier="MyId", Time = now, Latitude = 30.0, Longitude = 30.0 };
             ServerFacade.Instance.DBService.SaveReport(data);
 
-            IList<ReportData> allData = ServerFacade.Instance.DBService.GetAllData();
-            ReportData lastLoadedData = allData[0];
+            IList<LocationData> allData = ServerFacade.Instance.DBService.GetAllData();
+            LocationData lastLoadedData = allData[0];
             Assert.AreEqual(now, lastLoadedData.Time, "Can't load saved data");
         }
 

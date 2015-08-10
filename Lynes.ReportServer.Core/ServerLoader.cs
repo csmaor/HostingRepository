@@ -23,7 +23,7 @@ namespace Lynes.ReportsServer.Core
             m_facade = new ServerFacadeImpl();
 
             InitDB();
-            InitHttpServer();
+            //InitHttpServer();
         }
 
         private void InitDB()
@@ -43,7 +43,7 @@ namespace Lynes.ReportsServer.Core
         {
             s_log.Info("Closing The Server");
             
-            m_httpServer.Start();
+            //m_httpServer.Stop();
             m_dbService.Close();
             m_facade.Close();
         }

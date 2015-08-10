@@ -22,11 +22,19 @@ namespace Lynes.ReportsService
             m_dbService = new DBService();
             m_dbService.Init();
         }
-
-        public void Report(ReportData data)
+        public void ReportData(string identifier, DateTime dateTime, double latitude, double longitude)
         {
-            m_dbService.SaveReport(data);
+            ReportedLocation data = new ReportedLocation() { Identifier = identifier, Latitude = latitude, Longitude = longitude };
         }
 
+        public void ReportOperation(string identifier, string operation)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReportPlace(string identifier, string placeId, string placeName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

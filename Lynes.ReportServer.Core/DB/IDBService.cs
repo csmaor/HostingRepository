@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lynes.ReportsServer.Core.DataModels;
 
 namespace Lynes.ReportsServer.Core.DB
 {
@@ -12,7 +13,7 @@ namespace Lynes.ReportsServer.Core.DB
         void Init();
         void Close();
 
-        void SaveReport(ReportData data);
-        IList<ReportData> GetAllData();
+        void SaveReport(LocationData data);
+        IList<LocationData> GetAllData();
     }
 }
