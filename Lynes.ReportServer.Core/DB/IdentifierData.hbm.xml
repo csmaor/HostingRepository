@@ -30,12 +30,14 @@
 
     <joined-subclass table="PlaceData"  name="PlaceData">
       <key column="Identifier" />
+      <property name="Time" />
       <property name="PlaceId" />
       <property name="PlaceName" />
     </joined-subclass>
 
       <joined-subclass table="OperationData"  name="OperationData">
       <key column="Identifier" />
+        <property name="Time" />
       <property name="Operation" />
     </joined-subclass>
 

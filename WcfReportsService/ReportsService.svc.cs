@@ -29,16 +29,22 @@ namespace Lynes.ReportsService
             m_dbService.SaveLocation(data);
         }
 
-        public void ReportOperation(string identifier, string operation)
+        public void ReportOperation(string identifier, DateTime dateTime, string operation)
         {
-            OperationData data = new OperationData() { Identifier = identifier, Operation = operation };
+            OperationData data = new OperationData() { Identifier = identifier, Time = dateTime, Operation = operation };
             m_dbService.SaveOperation(data);
         }
 
-        public void ReportPlace(string identifier, string placeId, string placeName)
+        public void ReportPlace(string identifier, DateTime dateTime, string placeId, string placeName)
         {
-            PlaceData data = new PlaceData() { Identifier = identifier, PlaceId = placeId, PlaceName = placeName };
+            PlaceData data = new PlaceData() { Identifier = identifier, Time = dateTime, PlaceId = placeId, PlaceName = placeName };
             m_dbService.SavePlace(data);
+        }
+
+        public void ReportAcceleration(string identifier, DateTime dateTime, float x, float y, float z)
+        {
+            AccelerometerData data = new AccelerometerData() { Identifier = identifier, Time = dateTime, X = x, Y = y, Z = z };
+            m_dbService.SaveAcceleration(data);
         }
 
         public void Close()

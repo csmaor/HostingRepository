@@ -16,6 +16,7 @@ namespace Lynes.ReportsServer.Core.DB
         IList<LocationData> GetLocationsData();
         IList<OperationData> GetOperationsData();
         IList<PlaceData> GetPlacesData();
+        IList<AccelerometerData> GetAccelerationData();
 
         void ExportCSVs(string path);
     }

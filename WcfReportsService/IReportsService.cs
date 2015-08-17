@@ -18,11 +18,15 @@ namespace Lynes.ReportsService
 
         [WebInvoke(Method = "POST", UriTemplate = "ReportOperation")]
         [OperationContract]
-        void ReportOperation(string identifier, string operation);
+        void ReportOperation(string identifier, DateTime dateTime, string operation);
 
         [WebInvoke(Method = "POST", UriTemplate = "ReportPlace")]
         [OperationContract]
-        void ReportPlace(string identifier, string placeId, string placeName);
+        void ReportPlace(string identifier, DateTime dateTime, string placeId, string placeName);
+
+        [WebInvoke(Method = "POST", UriTemplate = "ReportPlace")]
+        [OperationContract]
+        void ReportAcceleration(string identifier, DateTime dateTime, float x, float y, float z);
     }
 
     
