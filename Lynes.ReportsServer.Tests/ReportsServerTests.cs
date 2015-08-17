@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Lynes.ReportsServer.Core.DataModels;
 using Lynes.ReportsServer.Core.DB;
 using System.Reflection;
+using System.Timers;
 
 namespace Lynes.ReportsServer.Tests
 {
@@ -35,6 +36,10 @@ namespace Lynes.ReportsServer.Tests
         public void TestSavingData()
         {
             DateTime now = DateTime.Now;
+            m_reportsService.ReportLocation("MyId", now, 30.0, 30.0, 0);
+            m_reportsService.ReportLocation("MyId", now, 30.0, 30.0, 0);
+            m_reportsService.ReportLocation("MyId", now, 30.0, 30.0, 0);
+            m_reportsService.ReportLocation("MyId", now, 30.0, 30.0, 0);
             m_reportsService.ReportLocation("MyId", now, 30.0, 30.0, 0);
 
             IList<LocationData> allData = m_dbService.GetLocationsData();
