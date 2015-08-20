@@ -9,8 +9,15 @@ namespace Lynes.ReportsServer.Core.DB
         void Close();
 
         void SaveLocation(LocationData data);
+        void SaveOperation(OperationData data);
+        void SavePlace(PlaceData data);
+        void SaveAcceleration(AccelerometerData data);
+
         IList<LocationData> GetLocationsData();
         IList<OperationData> GetOperationsData();
         IList<PlaceData> GetPlacesData();
+        IList<AccelerometerData> GetAccelerationData();
+
+        void ExportCSVs(string path);
     }
 }

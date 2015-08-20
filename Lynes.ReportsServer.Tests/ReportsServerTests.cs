@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Lynes.ReportsServer.Core.DataModels;
 using Lynes.ReportsServer.Core.DB;
 using System.Reflection;
+using System.Timers;
 
 namespace Lynes.ReportsServer.Tests
 {
@@ -35,21 +36,37 @@ namespace Lynes.ReportsServer.Tests
         public void TestSavingData()
         {
             DateTime now = DateTime.Now;
-            m_reportsService.ReportLocation("MyId", now, 30.0, 30.0, 0);
+
+            string id = "MyId";
+
+            m_reportsService.ReportLocation(id, now, 30.0, 30.0, 0);
+            m_reportsService.ReportLocation(id, now, 30.0, 30.0, 0);
+            m_reportsService.ReportLocation(id, now, 30.0, 30.0, 0);
+            m_reportsService.ReportLocation(id, now, 30.0, 30.0, 0);
+            m_reportsService.ReportLocation(id, now, 30.0, 30.0, 0);
 
             IList<LocationData> allData = m_dbService.GetLocationsData();
             LocationData lastLoadedData = allData[0];
             Assert.AreEqual(now, lastLoadedData.Time, "Can't load saved data");
 
-            m_reportsService.ReportOperation("MyId", "Supermarket");
+            m_reportsService.ReportOperation(id, now, "Supermarket");
             IList<OperationData> operations = m_dbService.GetOperationsData();
             OperationData lastOperation = operations[0];
             Assert.AreEqual("Supermarket", lastOperation.Operation, "Operation didn't saved properly");
 
-            m_reportsService.ReportPlace("MyId", "Supermarket1", "Suprtmarker");
+            m_reportsService.ReportPlace(id, now, "Supermarket1", "Suprtmarker");
             IList<PlaceData> places = m_dbService.GetPlacesData();
             PlaceData lastPlace = places[0];
             Assert.AreEqual("Supermarket1", lastPlace.PlaceId, "Place didn't saved properly");
+
+            m_reportsService.ReportAcceleration(id, now, 20, 20, 20);
+            IList<AccelerometerData> acc = m_dbService.GetAccelerationData();
+            AccelerometerData accData = acc[0];
+            Assert.AreEqual(20, accData.X, "Acceleration X didn't saved properly");
+
+
+
+
         }
 
         [TearDown]

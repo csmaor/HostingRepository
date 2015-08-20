@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModels\AccelerometerData.cs" />
     <Compile Include="DataModels\LocationData.cs" />
     <Compile Include="DataModels\IdentifierData.cs" />
     <Compile Include="DataModels\PlaceData.cs" />

@@ -18,6 +18,12 @@
       <property name="Accuracy" />
     </union-subclass>
 
+    <union-subclass table="AccelerometerData"  name="AccelerometerData">
+      <property name="Time" />
+      <property name="X" />
+      <property name="Y" />
+      <property name="Z" />
+    </union-subclass>
 
     <union-subclass table="PlaceData"  name="PlaceData">
       <property name="PlaceId" />
