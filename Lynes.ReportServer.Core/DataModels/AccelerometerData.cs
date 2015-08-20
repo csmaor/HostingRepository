@@ -7,9 +7,9 @@ namespace Lynes.ReportsServer.Core.DataModels
         public virtual DateTime Time { get; set; }
 
         public virtual float X { get; set; }
-                      
+
         public virtual float Y { get; set; }
-                       
+
         public virtual float Z { get; set; }
     }
 }

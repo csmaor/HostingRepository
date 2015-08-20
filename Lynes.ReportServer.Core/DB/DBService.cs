@@ -88,7 +88,7 @@ namespace Lynes.ReportsServer.Core.DB
         {
             IQuery q = m_session.CreateQuery("FROM AccelerometerData");
             //IList<AccelerometerData> list = ;
-
+            
         }
 
         public void Close()
