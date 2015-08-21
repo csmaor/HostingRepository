@@ -5,6 +5,7 @@ using log4net;
 using Lynes.ReportsServer.Core.DataModels;
 using NHibernate;
 using NHibernate.Cfg;
+using System.IO;
 
 namespace Lynes.ReportsServer.Core.DB
 {
@@ -86,8 +87,35 @@ namespace Lynes.ReportsServer.Core.DB
 
         public void ExportCSVs(string path)
         {
-            IQuery q = m_session.CreateQuery("FROM AccelerometerData");
-            //IList<AccelerometerData> list = ;
+            SortedList<DateTime, IdentifierData> sortedList = new SortedList<DateTime, IdentifierData>();
+
+            IList<LocationData> locations = GetLocationsData();
+            foreach (LocationData ld in locations)
+                sortedList.Add(ld.Time, ld);
+
+            IList<AccelerometerData> acceleromaters = GetAccelerationData();
+            foreach (AccelerometerData ac in acceleromaters)
+                sortedList.Add(ac.Time, ac);
+
+            IList<PlaceData> places = GetPlacesData();
+            foreach (PlaceData pd in places)
+                sortedList.Add(pd.Time, pd);
+
+            IList<OperationData> operations = GetOperationsData();
+            foreach (OperationData od in operations)
+                sortedList.Add(od.Time, od);
+
+
+
+            FileStream fs = new FileStream("Export.csv", FileMode.OpenOrCreate);
+            StreamWriter sw = new StreamWriter(fs);
+            foreach (KeyValuePair<DateTime, IdentifierData> pair in sortedList)
+            {
+
+            }
+
+
+            
             
         }
 

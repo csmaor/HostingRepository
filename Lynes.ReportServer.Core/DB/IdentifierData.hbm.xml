@@ -27,12 +27,6 @@
       <property name="Z" />
     </joined-subclass>
 
-    <union-subclass table="AccelerometerData"  name="AccelerometerData">
-      <property name="Time" />
-      <property name="X" />
-      <property name="Y" />
-      <property name="Z" />
-    </union-subclass>
 
     <joined-subclass table="PlaceData"  name="PlaceData">
       <key column="Identifier" />
@@ -41,9 +35,9 @@
       <property name="PlaceName" />
     </joined-subclass>
 
-      <joined-subclass table="OperationData"  name="OperationData">
+    <joined-subclass table="OperationData"  name="OperationData">
       <key column="Identifier" />
-        <property name="Time" />
+      <property name="Time" />
       <property name="Operation" />
     </joined-subclass>
 

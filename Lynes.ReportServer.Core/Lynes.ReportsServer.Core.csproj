@@ -81,6 +81,7 @@
     <Compile Include="DataModels\IdentifierData.cs" />
     <Compile Include="DataModels\PlaceData.cs" />
     <Compile Include="DataModels\OperationData.cs" />
+    <Compile Include="DB\CSVDBService.cs" />
     <Compile Include="DB\DBService.cs" />
     <Compile Include="DB\IDBService.cs" />
     <Compile Include="GeoPosition.cs" />
