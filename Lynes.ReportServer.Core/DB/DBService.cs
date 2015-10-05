@@ -5,7 +5,10 @@ using log4net;
 using Lynes.ReportsServer.Core.DataModels;
 using NHibernate;
 using NHibernate.Cfg;
+using System.Linq;
 using System.IO;
+using Lynes.ReportsServer.Core.DataView;
+using System.Text;
 
 namespace Lynes.ReportsServer.Core.DB
 {
@@ -85,38 +88,65 @@ namespace Lynes.ReportsServer.Core.DB
             return list;
         }
 
-        public void ExportCSVs(string path)
+        public List<LocationsDataView> GetLocationsDataView()
         {
-            SortedList<DateTime, IdentifierData> sortedList = new SortedList<DateTime, IdentifierData>();
+            IList<LocationData> lstLocationData = GetLocationsData();
+            IList<AccelerometerData> lstAccelerationData = GetAccelerationData();
 
-            IList<LocationData> locations = GetLocationsData();
-            foreach (LocationData ld in locations)
-                sortedList.Add(ld.Time, ld);
+            var query = from ld in lstLocationData
+                           join ad in lstAccelerationData on ld.Identifier equals ad.Identifier
+                        select new { ld.Identifier, ld.Time, ld.Latitude, ld.Longitude, ld.Accuracy, ad.X, ad.Y, ad.Z } ;
 
-            IList<AccelerometerData> acceleromaters = GetAccelerationData();
-            foreach (AccelerometerData ac in acceleromaters)
-                sortedList.Add(ac.Time, ac);
-
-            IList<PlaceData> places = GetPlacesData();
-            foreach (PlaceData pd in places)
-                sortedList.Add(pd.Time, pd);
-
-            IList<OperationData> operations = GetOperationsData();
-            foreach (OperationData od in operations)
-                sortedList.Add(od.Time, od);
-
-
-
-            FileStream fs = new FileStream("Export.csv", FileMode.OpenOrCreate);
-            StreamWriter sw = new StreamWriter(fs);
-            foreach (KeyValuePair<DateTime, IdentifierData> pair in sortedList)
+            List<LocationsDataView> listLocationsDataView = new List<LocationsDataView>();
+            foreach (var data in query)
             {
-
+                LocationsDataView dataView = new LocationsDataView();
+                dataView.Identifier = data.Identifier;
+                dataView.Time = data.Time;
+                dataView.Latitude = data.Latitude;
+                dataView.Longitude = data.Longitude;
+                dataView.X = data.X;
+                dataView.Y = data.Y;
+                dataView.Z = data.Z;
+                listLocationsDataView.Add(dataView);
             }
 
+            return listLocationsDataView;
+        }
 
-            
-            
+        public void ExportCSVs(string filePath)
+        {
+            string fileName = string.Format("filename_{0}.csv", DateTime.Now.ToString("HHmmss_ddMMyyyy"));
+            string fullPasth = string.Format("{0}{1}", filePath, fileName);
+
+            if (!File.Exists(fullPasth))
+                File.Create(fullPasth).Close();
+
+            IList<LocationsDataView> allLocationsData = GetLocationsDataView();
+
+            StringBuilder csv = new StringBuilder();
+            string title = string.Format("Id, Time, Latitude, Longitude, accuracy, X, Y, Z{0}", System.Environment.NewLine);
+            csv.Append(title);
+
+            foreach (LocationsDataView locationData in allLocationsData)
+            {
+                string locationDataId = locationData.Identifier.ToString();
+                string locationTime = locationData.Time.ToString();
+                string locationLatitude = locationData.Latitude.ToString();
+                string locationLongitude = locationData.Longitude.ToString();
+                string locationAccuracy = locationData.Accuracy.ToString();
+                string locationX = locationData.X.ToString();
+                string locationY = locationData.Y.ToString();
+                string locationZ = locationData.Z.ToString();
+
+                string newLine = string.Format("{0},{1},{2},{3},{4},{5},{6},{7}{8}",
+                    locationDataId, locationTime, locationLatitude, locationLongitude, locationAccuracy,
+                    locationX, locationY, locationZ, System.Environment.NewLine);
+
+                csv.Append(newLine);
+            }
+
+            File.AppendAllText(fullPasth, csv.ToString());
         }
 
         public void Close()

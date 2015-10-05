@@ -12,22 +12,24 @@ namespace Lynes.ReportsService
     [ServiceContract]
     public interface IReportsService
     {
-        [WebInvoke(Method = "POST", UriTemplate = "ReportData")]
+        [WebGet(UriTemplate = "ReportLocation/{identifier}/{dateTime}/{latitude}/{longitude}/{accuracy}")]
         [OperationContract]
-        void ReportLocation(string identifier, DateTime dateTime, double latitude, double longitude, double accuracy);
+        void ReportLocation(string identifier, string dateTime, string latitude, string longitude, string accuracy);
 
-        [WebInvoke(Method = "POST", UriTemplate = "ReportOperation")]
+        [WebGet(UriTemplate = "ReportOperation/{identifier}/{dateTime}/{operation}")]
         [OperationContract]
-        void ReportOperation(string identifier, DateTime dateTime, string operation);
+        void ReportOperation(string identifier, string dateTime, string operation);
 
-        [WebInvoke(Method = "POST", UriTemplate = "ReportPlace")]
+        [WebGet(UriTemplate = "ReportPlace/{identifier}/{dateTime}/{placeId}/{placeName}")]
         [OperationContract]
-        void ReportPlace(string identifier, DateTime dateTime, string placeId, string placeName);
+        void ReportPlace(string identifier, string dateTime, string placeId, string placeName);
 
-        [WebInvoke(Method = "POST", UriTemplate = "ReportPlace")]
+        [WebGet(UriTemplate = "ReportAcceleration/{identifier}/{dateTime}/{x}/{y}/{z}")]
         [OperationContract]
-        void ReportAcceleration(string identifier, DateTime dateTime, float x, float y, float z);
+        void ReportAcceleration(string identifier, string dateTime, string x, string y, string z);
+
+        [WebGet(UriTemplate = "CteateCsv/{password}")]
+        [OperationContract]
+        void CteateCsv(string password);
     }
-
-
 }

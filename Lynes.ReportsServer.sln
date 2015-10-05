@@ -34,6 +34,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", "WebSite\", "{6B5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lynes.ReportsService", "WcfReportsService\Lynes.ReportsService.csproj", "{4FC53043-F461-4D2D-8671-1F82F3C7FD68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lynes.CreatorCsv.Win", "CreatorCsv\Lynes.CreatorCsv.Win.csproj", "{EE4B0F02-E5D2-4E05-95AB-CECCC905CB04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{4FC53043-F461-4D2D-8671-1F82F3C7FD68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FC53043-F461-4D2D-8671-1F82F3C7FD68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FC53043-F461-4D2D-8671-1F82F3C7FD68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE4B0F02-E5D2-4E05-95AB-CECCC905CB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE4B0F02-E5D2-4E05-95AB-CECCC905CB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE4B0F02-E5D2-4E05-95AB-CECCC905CB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE4B0F02-E5D2-4E05-95AB-CECCC905CB04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,5 +71,6 @@ Global
 		{3ADA92AF-45A4-4765-9666-FA5A5AC071D5} = {B65FC96A-E80C-46A1-85DB-24AD1FBEDB8E}
 		{6B5D8515-D946-4F29-95FC-C75552DB246C} = {EF5B8D9C-3146-4331-B441-AD46D00C778E}
 		{4FC53043-F461-4D2D-8671-1F82F3C7FD68} = {EF5B8D9C-3146-4331-B441-AD46D00C778E}
+		{EE4B0F02-E5D2-4E05-95AB-CECCC905CB04} = {EF5B8D9C-3146-4331-B441-AD46D00C778E}
 	EndGlobalSection
 EndGlobal
