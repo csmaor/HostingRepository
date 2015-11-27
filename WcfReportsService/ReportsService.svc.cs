@@ -140,7 +140,7 @@ namespace Lynes.ReportsService
             ReportAcceleration(identifier, nowStringFormat, "10", "20", "30");
             ReportAcceleration(identifier, nowStringFormat, "40", "50", "60");
 
-            m_dbService.ExportCSVs("C://");
+            m_dbService.ExportCSVs(@"G:\PleskVhosts\goodcallsport.com\httpdocs\test\DB\");
         }
 
         public void Close()

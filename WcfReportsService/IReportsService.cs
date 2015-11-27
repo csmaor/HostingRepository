@@ -28,8 +28,8 @@ namespace Lynes.ReportsService
         [OperationContract]
         void ReportAcceleration(string identifier, string dateTime, string x, string y, string z);
 
-        [WebGet(UriTemplate = "CteateCsv/{password}")]
+        [WebGet(UriTemplate = "CteateCsv/{identifier}")]
         [OperationContract]
-        void CteateCsv(string password);
+        void CteateCsv(string identifier);
     }
 }
