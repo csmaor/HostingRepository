@@ -147,7 +147,7 @@ namespace Lynes.ReportsService
             //ReportAccelerometer(identifier, nowStringFormat, "10", "20", "30", "1");
             //ReportAccelerometer(identifier, nowStringFormat, "40", "50", "60", "1");
 
-            m_dbService.ExportCSVs(@"E:\Maor\Programming\WorkingFolder\ReportsServer\WcfReportsService\bin");
+            m_dbService.ExportCSVs(@"G:\PleskVhosts\goodcallsport.com\httpdocs\test\DB\");
         }
 
         public void Close()
