@@ -24,9 +24,9 @@ namespace Lynes.ReportsService
         [OperationContract]
         void ReportPlace(string identifier, string dateTime, string placeId, string placeName);
 
-        [WebGet(UriTemplate = "ReportAcceleration/{identifier}/{dateTime}/{x}/{y}/{z}")]
+        [WebGet(UriTemplate = "ReportAcceleration/{identifier}/{dateTime}/{x}/{y}/{z}/{acc}")]
         [OperationContract]
-        void ReportAcceleration(string identifier, string dateTime, string x, string y, string z);
+        void ReportAccelerometer(string identifier, string dateTime, string x, string y, string z, string acc);
 
         [WebGet(UriTemplate = "CteateCsv/{password}")]
         [OperationContract]

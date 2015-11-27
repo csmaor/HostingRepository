@@ -11,5 +11,7 @@ namespace Lynes.ReportsServer.Core.DataModels
         public virtual float Y { get; set; }
 
         public virtual float Z { get; set; }
+
+        public virtual double Accuracy { get; set; }
     }
 }

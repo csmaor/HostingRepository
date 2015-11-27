@@ -25,6 +25,7 @@
       <property name="X" />
       <property name="Y" />
       <property name="Z" />
+      <property name="Accuracy" />
     </joined-subclass>
 
 

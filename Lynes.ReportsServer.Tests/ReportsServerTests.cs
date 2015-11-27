@@ -27,7 +27,7 @@ namespace Lynes.ReportsServer.Tests
         public void TestSavingData()
         {
             DateTime now = DateTime.Now;
-            string nowStringFormat = now.ToString("yyyyMMddHHmmss");
+            string nowStringFormat = now.ToString("ddMMyyyyHHmmss");
             string id = "MyId";
 
             m_reportsService.ReportLocation(id, nowStringFormat, "30.0", "30.0", "0");
@@ -50,10 +50,12 @@ namespace Lynes.ReportsServer.Tests
             PlaceData lastPlace = places[0];
             Assert.AreEqual("Supermarket1", lastPlace.PlaceId, "Place didn't saved properly");
 
-            m_reportsService.ReportAcceleration(id, nowStringFormat, "20", "20", "20");
+            m_reportsService.ReportAccelerometer(id, nowStringFormat, "20", "20", "20", "1");
             IList<AccelerometerData> acc = m_dbService.GetAccelerationData();
             AccelerometerData accData = acc[0];
             Assert.AreEqual(20, accData.X, "Acceleration X didn't saved properly");
+
+            m_reportsService.CteateCsv(id);
         }
 
         [TearDown]

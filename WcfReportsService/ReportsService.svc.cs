@@ -95,12 +95,14 @@ namespace Lynes.ReportsService
             m_dbService.SavePlace(data);
         }
 
-        public void ReportAcceleration(string identifier, string dateTimeStringFormat, string sx, string sy, string sz)
+        public void ReportAccelerometer(string identifier, string dateTimeStringFormat, string sx, string sy, string sz, string sacc)
         {
             DateTime dateTime;
             float x;
             float y;
             float z;
+            double acc;
+
             bool isValidParse;
 
             isValidParse = (DateTime.TryParseExact(dateTimeStringFormat,
@@ -122,7 +124,12 @@ namespace Lynes.ReportsService
             isValidParse = float.TryParse(sz, out z);
             if (!isValidParse)
                 return;
-            AccelerometerData data = new AccelerometerData() { Identifier = identifier, Time = dateTime, X = x, Y = y, Z = z };
+
+            isValidParse = double.TryParse(sacc, out acc);
+            if (!isValidParse)
+                return;
+
+            AccelerometerData data = new AccelerometerData() { Identifier = identifier, Time = dateTime, X = x, Y = y, Z = z, Accuracy=acc };
             m_dbService.SaveAcceleration(data);
         }
         
@@ -132,15 +139,15 @@ namespace Lynes.ReportsService
             string nowStringFormat = now.ToString(DATE_TIME_FORMAT);
             //string identifier = "MyId";
 
-            ReportLocation(identifier, nowStringFormat, "31.0", "10.0", "1");
-            ReportLocation(identifier, nowStringFormat, "32.0", "20.0", "2");
-            ReportLocation(identifier, nowStringFormat, "33.0", "30.0", "3");
-            ReportLocation(identifier, nowStringFormat, "34.0", "40.0", "4");
-            ReportLocation(identifier, nowStringFormat, "35.0", "50.0", "5");
-            ReportAcceleration(identifier, nowStringFormat, "10", "20", "30");
-            ReportAcceleration(identifier, nowStringFormat, "40", "50", "60");
+            //ReportLocation(identifier, nowStringFormat, "31.0", "10.0", "1");
+            //ReportLocation(identifier, nowStringFormat, "32.0", "20.0", "2");
+            //ReportLocation(identifier, nowStringFormat, "33.0", "30.0", "3");
+            //ReportLocation(identifier, nowStringFormat, "34.0", "40.0", "4");
+            //ReportLocation(identifier, nowStringFormat, "35.0", "50.0", "5");
+            //ReportAccelerometer(identifier, nowStringFormat, "10", "20", "30", "1");
+            //ReportAccelerometer(identifier, nowStringFormat, "40", "50", "60", "1");
 
-            m_dbService.ExportCSVs("C://");
+            m_dbService.ExportCSVs(@"E:\Maor\Programming\WorkingFolder\ReportsServer\WcfReportsService\bin");
         }
 
         public void Close()
